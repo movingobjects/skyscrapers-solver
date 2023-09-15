@@ -1,0 +1,14 @@
+{
+  "name": "skyscrapers-solver",
+  "version": "0.1.0",
+  "description": "Skyscraper puzzle solver written in Node",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start"
+  },
+  "author": "Scott Thiessen (http://movingobjects.io)",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
