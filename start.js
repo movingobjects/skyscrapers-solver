@@ -16,15 +16,19 @@ const parseLine = (line) => (
         : [Number(char)]
     ))
 );
-const parseClues = (clues) => (
-  clues
+const parseClues = (clues, reverse) => {
+  const result = clues
     .split('')
     .map((char) => (
       (char === EMPTY_CHAR)
         ? null
         : Number(char)
-    ))
-);
+    ));
+  if (reverse) {
+    result.reverse();
+  }
+  return result;
+};
 
 const removeDupes = (grid) => {
 
@@ -103,10 +107,6 @@ const pruneByClues = (grid, gridClues) => {
       const possibleLines = cartesian(...nextLine)
         .filter((lineOpts) => hasUniqElems(lineOpts))
         .filter((lineOpts) => matchesClue(lineOpts));
-
-      if (possibleLines?.length > 1000) {
-        return nextLine;
-      }
 
       nextLine = nextLine.map((cellOpts, i) => (
         cellOpts.filter((num) => (
@@ -190,10 +190,10 @@ const percSolved = (grid) => {
 
 let grid = data.lines.map(parseLine);
 const clues = {
-  t: parseClues(data.clues.t),
-  r: parseClues(data.clues.r),
-  b: parseClues(data.clues.b),
-  l: parseClues(data.clues.l)
+  t: parseClues(data.clues.top, true),
+  r: parseClues(data.clues.rgt, true),
+  b: parseClues(data.clues.btm, false),
+  l: parseClues(data.clues.lft, false)
 }
 
 while (!isGridSolved(grid)) {
