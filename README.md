@@ -5,7 +5,10 @@ Work-in-progress (terribly inefficient, and may not solve tricky puzzles at all)
 ## Usage
 `$ yarn start`
 
-## Example JSON
+## `puzzle.json`
+
+- Use `.` for blank spaces in grid and clues
+- Clues are entered left-to-right for `top`/`btm` and top-to-bottom for `lft`/`rgt`
 
 For a puzzle that looks like this:
 
